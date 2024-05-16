@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>COUNTDOWN</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins"> <!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins|Lobster"> <!-- Google Fonts -->
 <style>
     body {
         display: flex;
@@ -13,42 +13,42 @@
         align-items: center;
         height: 100vh;
         margin: 0;
-        background-color: #e5e5e5; /* Background color */
+        background: linear-gradient(to right, #f5f7fa, #c3cfe2); /* Background gradient */
+        font-family: 'Poppins', sans-serif;
     }
 
-    /* Styles for the title */
-    #title {
-        position: absolute;
-        bottom: 5%;
-        left: 50%;
-        transform: translateX(-50%);
-        color: #14213d;
-        font-family: 'Poppins', sans-serif;
-        font-size: 24px; /* Initial font size */
+    /* Styles for the countdown box */
+    #countdown-box {
+        background-color: #ffffffcc; /* Semi-transparent white background */
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         text-align: center;
     }
 
     /* Styles for the countdown */
     #countdown {
-        position: absolute;
-        top: 60%;
-        left: 50%;
-        transform: translate(-50%, -50%);
         color: #14213d;
+        font-size: 64px;
         font-family: 'Poppins', sans-serif;
-        display: block; /* Initially display countdown */
+        margin: 20px 0;
     }
 
     /* Styles for the logo */
     #logo {
-        position: absolute;
-        top: 20%; /* Adjust the top position */
-        left: 50%;
-        transform: translateX(-50%);
-        display: block; /* Initially display logo */
+        width: 200px; /* Adjust the width as needed */
     }
 
-    /* Responsive font sizes */
+    /* Styles for the title */
+    #title {
+        color: #14213d;
+        font-family: 'Lobster', cursive;
+        font-size: 36px; /* Initial font size */
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    /* Responsive styles */
     @media (max-width: 600px) {
         #logo {
             width: 100px; /* Adjust the width for small screens */
@@ -57,7 +57,10 @@
             font-size: 32px; /* Smaller font size for small screens */
         }
         #title {
-            font-size: 16px; /* Smaller font size for small screens */
+            font-size: 24px; /* Smaller font size for small screens */
+        }
+        #countdown-box {
+            padding: 10px;
         }
     }
 
@@ -69,7 +72,10 @@
             font-size: 48px; /* Medium font size */
         }
         #title {
-            font-size: 20px; /* Medium font size */
+            font-size: 30px; /* Medium font size */
+        }
+        #countdown-box {
+            padding: 15px;
         }
     }
 
@@ -81,7 +87,10 @@
             font-size: 64px; /* Larger font size */
         }
         #title {
-            font-size: 24px; /* Larger font size */
+            font-size: 36px; /* Larger font size */
+        }
+        #countdown-box {
+            padding: 20px;
         }
     }
 </style>
@@ -89,8 +98,10 @@
 <body>
 <img id="logo" src="logo.png" alt="Logo"> <!-- Logo -->
 
-<div id="countdown"></div> <!-- Countdown timer -->
-<div id="title">Countdown to October 1, 2024</div> <!-- Timer title -->
+<div id="countdown-box">
+    <div id="title">Countdown to October 1, 2024</div> <!-- Timer title -->
+    <div id="countdown"></div> <!-- Countdown timer -->
+</div>
 
 <script>
 // Target date (October 1, 2024 at 00:00 hours)
@@ -106,8 +117,7 @@
             document.getElementById("card").style.display = "block";
             // Hide the logo and countdown
             document.getElementById("logo").style.display = "none";
-            document.getElementById("countdown").style.display = "none";
-            document.getElementById("title").style.display = "none";
+            document.getElementById("countdown-box").style.display = "none";
         } else {
             // Calculate remaining time
             var days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
