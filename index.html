@@ -22,7 +22,6 @@
         left: 50%;
         transform: translate(-50%, -50%);
         color: #14213d;
-        font-size: 64px;
         font-family: 'Poppins', sans-serif;
         display: block; /* Initially display countdown */
     }
@@ -33,8 +32,35 @@
         top: 20%; /* Adjust the top position */
         left: 50%;
         transform: translateX(-50%);
-        width: 200px; /* Adjust the width as needed */
         display: block; /* Initially display logo */
+    }
+
+    /* Responsive font sizes */
+    @media (max-width: 600px) {
+        #logo {
+            width: 100px; /* Adjust the width for small screens */
+        }
+        #countdown {
+            font-size: 32px; /* Smaller font size for small screens */
+        }
+    }
+
+    @media (min-width: 601px) and (max-width: 1200px) {
+        #logo {
+            width: 150px; /* Adjust the width for medium screens */
+        }
+        #countdown {
+            font-size: 48px; /* Medium font size */
+        }
+    }
+
+    @media (min-width: 1201px) {
+        #logo {
+            width: 200px; /* Adjust the width for large screens */
+        }
+        #countdown {
+            font-size: 64px; /* Larger font size */
+        }
     }
 </style>
 </head>
