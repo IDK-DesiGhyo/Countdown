@@ -20,10 +20,8 @@
 
     /* Styles for the logo */
     #logo {
-        position: absolute;
-        top: 20px;
-        left: 20px;
         width: 100px; /* Adjust the width as needed */
+        margin-bottom: 20px;
     }
 
     /* Styles for the title */
@@ -43,18 +41,23 @@
     }
 
     /* Styles for the calendar */
-    #calendar {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        gap: 5px;
-        margin-top: 20px;
+    #calendar-container {
+        border: 1px solid #333333;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
     }
 
     #monthName {
         font-size: 18px;
         font-weight: 700;
         margin-bottom: 10px;
-        text-align: center;
+    }
+
+    #calendar {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 5px;
     }
 
     .day {
@@ -132,8 +135,10 @@
 <div id="title">Padhloo!!!</div> <!-- Timer title -->
 <div id="countdown"></div> <!-- Countdown timer -->
 
-<div id="monthName"></div> <!-- Month name -->
-<div id="calendar"></div> <!-- Calendar -->
+<div id="calendar-container">
+    <div id="monthName"></div> <!-- Month name -->
+    <div id="calendar"></div> <!-- Calendar -->
+</div>
 
 <script>
 // Target date (October 1, 2024 at 00:00 hours)
