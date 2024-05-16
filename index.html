@@ -18,17 +18,23 @@
         color: #333333; /* Dark grey color for text */
     }
 
+    /* Container for the logo and title */
+    #header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
     /* Styles for the logo */
     #logo {
         width: 100px; /* Adjust the width as needed */
-        margin-bottom: 20px;
+        margin-right: 10px;
     }
 
     /* Styles for the title */
     #title {
-        font-size: 24px; /* Initial font size */
+        font-size: 36px; /* Increased font size */
         font-weight: 700;
-        margin-bottom: 20px;
         text-align: center;
     }
 
@@ -85,7 +91,7 @@
             font-size: 32px; /* Smaller font size for small screens */
         }
         #title {
-            font-size: 20px; /* Smaller font size for small screens */
+            font-size: 28px; /* Increased font size for small screens */
         }
         .day {
             width: 30px;
@@ -102,7 +108,7 @@
             font-size: 40px; /* Medium font size */
         }
         #title {
-            font-size: 22px; /* Medium font size */
+            font-size: 32px; /* Increased font size for medium screens */
         }
         .day {
             width: 35px;
@@ -119,7 +125,7 @@
             font-size: 48px; /* Larger font size */
         }
         #title {
-            font-size: 24px; /* Larger font size */
+            font-size: 36px; /* Increased font size */
         }
         .day {
             width: 40px;
@@ -130,9 +136,11 @@
 </style>
 </head>
 <body>
-<img id="logo" src="logo.png" alt="Logo"> <!-- Logo -->
+<div id="header">
+    <img id="logo" src="logo.png" alt="Logo"> <!-- Logo -->
+    <div id="title">Padhloo!!!</div> <!-- Timer title -->
+</div>
 
-<div id="title">Padhloo!!!</div> <!-- Timer title -->
 <div id="countdown"></div> <!-- Countdown timer -->
 
 <div id="calendar-container">
@@ -151,9 +159,9 @@
 
         if (timeDifference <= 0) {
             // Hide the logo and countdown
-            document.getElementById("logo").style.display = "none";
+            document.getElementById("header").style.display = "none";
             document.getElementById("countdown").style.display = "none";
-            document.getElementById("title").style.display = "none";
+            document.getElementById("calendar-container").style.display = "none";
         } else {
             // Calculate remaining time
             var days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
