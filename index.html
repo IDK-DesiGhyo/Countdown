@@ -177,13 +177,6 @@ function updateCountdown() {
         // Display countdown
         document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
 
-        // Apply color of "Padhloo!!!" to the current day
-        var currentDay = document.getElementById("calendar").querySelector('.day:nth-child(' + (currentDate.getDate() + 0) + ')');
-        if (currentDay) {
-        currentDay.style.backgroundColor = "#ff6f61"; // Color of "Padhloo!!!"
-        currentDay.style.color = "#ffffff"; // White text color for better visibility
-        }
-
         // Continue countdown
         setTimeout(updateCountdown, 1000);
     }
@@ -213,6 +206,12 @@ function updateCountdown() {
             if (day < currentDate.getDate()) {
                 dayElement.classList.add('past-day');
             }
+        // Apply color of "Padhloo!!!" to the current day
+        var currentDay = document.getElementById("calendar").querySelector('.day:nth-child(' + (currentDate.getDate() + 0) + ')');
+        if (currentDay) {
+        currentDay.style.backgroundColor = "#ff6f61"; // Color of "Padhloo!!!"
+        currentDay.style.color = "#ffffff"; // White text color for better visibility
+        }
 
             calendar.appendChild(dayElement);
         }
