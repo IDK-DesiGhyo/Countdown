@@ -13,7 +13,7 @@
         align-items: center;
         height: 100vh;
         margin: 0;
-        background: linear-gradient(to right, #ece9e6, #ffffff); /* Subtle gradient background */
+        background: #ffffff; /* White background for minimal look */
         font-family: 'Poppins', sans-serif;
         color: #333333; /* Dark grey color for text */
     }
@@ -27,15 +27,16 @@
 
     /* Styles for the logo */
     #logo {
-        width: 100px; /* Adjust the width as needed */
+        width: 200px; /* logo width */
         margin-right: 10px;
     }
 
     /* Styles for the title */
     #title {
-        font-size: 36px; /* Increased font size */
+        font-size: 150px; /*Title font size*/
         font-weight: 700;
         text-align: center;
+        color: #ff6f61; /*Title color*/
     }
 
     /* Styles for the countdown */
@@ -44,20 +45,22 @@
         font-weight: 400;
         text-align: center;
         margin-bottom: 20px;
+        color: #333333; /* Dark grey color for the countdown */
     }
 
     /* Styles for the calendar */
     #calendar-container {
-        border: 1px solid #333333;
+        border: 1px solid #333333; /* Dark grey border */
         border-radius: 10px;
         padding: 20px;
         text-align: center;
     }
 
     #monthName {
-        font-size: 18px;
+        font-size: 48px;
         font-weight: 700;
         margin-bottom: 10px;
+        color: #333333; /* Dark grey color for the month name */
     }
 
     #calendar {
@@ -72,9 +75,11 @@
         align-items: center;
         width: 40px;
         height: 40px;
-        border: 1px solid #333333;
+        border: 1px solid #dddddd; /* Light grey border */
         border-radius: 5px;
         font-size: 14px;
+        background-color: #f9f9f9; /* Light background for days */
+        color: #333333; /* Dark grey color for text */
     }
 
     .past-day {
@@ -85,52 +90,52 @@
     /* Responsive styles */
     @media (max-width: 600px) {
         #logo {
-            width: 70px; /* Adjust the width for small screens */
+            width: 60px; /* Adjust the width for small screens */
         }
         #countdown {
-            font-size: 32px; /* Smaller font size for small screens */
+            font-size: 36px; /* Smaller font size for small screens */
         }
         #title {
-            font-size: 28px; /* Increased font size for small screens */
-        }
-        .day {
-            width: 30px;
-            height: 30px;
-            font-size: 12px;
-        }
-    }
-
-    @media (min-width: 601px) and (max-width: 1200px) {
-        #logo {
-            width: 90px; /* Adjust the width for medium screens */
-        }
-        #countdown {
-            font-size: 40px; /* Medium font size */
-        }
-        #title {
-            font-size: 32px; /* Increased font size for medium screens */
-        }
-        .day {
-            width: 35px;
-            height: 35px;
-            font-size: 13px;
-        }
-    }
-
-    @media (min-width: 1201px) {
-        #logo {
-            width: 100px; /* Adjust the width for large screens */
-        }
-        #countdown {
-            font-size: 48px; /* Larger font size */
-        }
-        #title {
-            font-size: 36px; /* Increased font size */
+            font-size: 36px; /* Increased font size for small screens */
         }
         .day {
             width: 40px;
             height: 40px;
             font-size: 14px;
+        }
+    }
+
+    @media (min-width: 601px) and (max-width: 1200px) {
+        #logo {
+            width: 100px; /* Adjust the width for medium screens */
+        }
+        #countdown {
+            font-size: 48px; /* Medium font size */
+        }
+        #title {
+            font-size: 64px; /* Increased font size for medium screens */
+        }
+        .day {
+            width: 50px;
+            height: 50px;
+            font-size: 36px;
+        }
+    }
+
+    @media (min-width: 1201px) {
+        #logo {
+            width: 150px; /* Adjust the width for large screens */
+        }
+        #countdown {
+            font-size: 64px; /* Larger font size */
+        }
+        #title {
+            font-size: 100px; /* Increased font size */
+        }
+        .day {
+            width: 75px;
+            height: 75px;
+            font-size: 48px;
         }
     }
 </style>
