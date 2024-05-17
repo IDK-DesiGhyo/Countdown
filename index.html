@@ -57,7 +57,7 @@
     }
 
     #monthName {
-        font-size: 48px;
+        font-size: 36px;
         font-weight: 700;
         margin-bottom: 10px;
         color: #333333; /* Dark grey color for the month name */
@@ -157,30 +157,37 @@
 // Target date (October 1, 2024 at 00:00 hours)
     var targetDate = new Date('2024-10-01T00:00:00');
 
-    // Function to update countdown
-    function updateCountdown() {
-        var currentDate = new Date();
-        var timeDifference = targetDate.getTime() - currentDate.getTime();
+  // Function to update countdown
+function updateCountdown() {
+    var currentDate = new Date();
+    var timeDifference = targetDate.getTime() - currentDate.getTime();
 
-        if (timeDifference <= 0) {
-            // Hide the logo and countdown
-            document.getElementById("header").style.display = "none";
-            document.getElementById("countdown").style.display = "none";
-            document.getElementById("calendar-container").style.display = "none";
-        } else {
-            // Calculate remaining time
-            var days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+    if (timeDifference <= 0) {
+        // Hide the logo and countdown
+        document.getElementById("header").style.display = "none";
+        document.getElementById("countdown").style.display = "none";
+        document.getElementById("calendar-container").style.display = "none";
+    } else {
+        // Calculate remaining time
+        var days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-            // Display countdown
-            document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+        // Display countdown
+        document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
 
-            // Continue countdown
-            setTimeout(updateCountdown, 1000);
+        // Apply color of "Padhloo!!!" to the current day
+        var currentDay = document.getElementById("calendar").querySelector('.day:nth-child(' + (currentDate.getDate() + 0) + ')');
+        if (currentDay) {
+        currentDay.style.backgroundColor = "#ff6f61"; // Color of "Padhloo!!!"
+        currentDay.style.color = "#ffffff"; // White text color for better visibility
         }
+
+        // Continue countdown
+        setTimeout(updateCountdown, 1000);
     }
+}
 
     // Initial call to start the countdown
     updateCountdown();
