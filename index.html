@@ -93,6 +93,23 @@
         color: #aaaaaa;
     }
 
+    /* Styles for the video container */
+    #video-container {
+        width: 80%;
+        max-width: 800px;
+        margin: 20px 0;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        position: relative;
+    }
+
+    #video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
     /* Responsive styles */
     @media (max-width: 600px) {
         #logo {
@@ -153,6 +170,10 @@
 </div>
 
 <div id="countdown"></div> <!-- Countdown timer -->
+
+<div id="video-container">
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 <div id="calendar-container">
     <div id="monthName"></div> <!-- Month name -->
