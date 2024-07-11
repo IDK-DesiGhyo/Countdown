@@ -93,21 +93,21 @@
         color: #aaaaaa;
     }
 
-    /* Styles for the video container */
-    #video-container {
-        width: 80%;
-        max-width: 800px;
-        margin: 20px 0;
-        padding-top: 56.25%; /* 16:9 Aspect Ratio */
-        position: relative;
+    /* Styles for the video button */
+    #videoButton {
+        padding: 10px 20px;
+        font-size: 18px;
+        font-weight: 600;
+        color: #ffffff;
+        background-color: #ff6f61;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 20px;
     }
 
-    #video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+    #videoButton:hover {
+        background-color: #e65a50;
     }
 
     /* Responsive styles */
@@ -171,9 +171,7 @@
 
 <div id="countdown"></div> <!-- Countdown timer -->
 
-<div id="video-container">
-    <iframe src="https://drive.google.com/file/d/1uzsNAOjndAMUomtWMYSR_11w9MG6VWLq/view?usp=drive_link" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+<button id="videoButton">Watch Video</button>
 
 <div id="calendar-container">
     <div id="monthName"></div> <!-- Month name -->
@@ -249,6 +247,11 @@ function updateCountdown() {
 
     // Update calendar every day at midnight
     setInterval(updateCalendar, 24 * 60 * 60 * 1000);
+
+    // Add event listener to video button
+    document.getElementById('videoButton').addEventListener('click', function() {
+        window.open('https://drive.google.com/file/d/1uzsNAOjndAMUomtWMYSR_11w9MG6VWLq/view?usp=drive_link', '_blank');
+    });
 </script>
 </body>
 </html>
