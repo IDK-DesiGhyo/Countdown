@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IDK</title>
+<title>IDK Countdown</title>
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -42,7 +42,7 @@
         font-size: 150px; /*Title font size*/
         font-weight: 700;
         text-align: center;
-        color: #ff6f61; /*Title color*/
+        color: #2a9d8f; /*Title color*/
     }
 
     /* Styles for the countdown */
@@ -91,23 +91,6 @@
     .past-day {
         text-decoration: line-through;
         color: #aaaaaa;
-    }
-
-    /* Styles for the video button */
-    #videoButton {
-        padding: 10px 20px;
-        font-size: 18px;
-        font-weight: 600;
-        color: #ffffff;
-        background-color: #ff6f61;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-bottom: 20px;
-    }
-
-    #videoButton:hover {
-        background-color: #e65a50;
     }
 
     /* Responsive styles */
@@ -171,8 +154,6 @@
 
 <div id="countdown"></div> <!-- Countdown timer -->
 
-<button id="videoButton">Doubt Session [Elimination Reactions]</button>
-
 <div id="calendar-container">
     <div id="monthName"></div> <!-- Month name -->
     <div id="calendar"></div> <!-- Calendar -->
@@ -234,7 +215,7 @@ function updateCountdown() {
         // Apply color of "Padhloo!!!" to the current day
         var currentDay = document.getElementById("calendar").querySelector('.day:nth-child(' + (currentDate.getDate() + 0) + ')');
         if (currentDay) {
-        currentDay.style.backgroundColor = "#ff6f61"; // Color of "Padhloo!!!"
+        currentDay.style.backgroundColor = "#2a9d8f"; // Color of "Padhloo!!!"
         currentDay.style.color = "#ffffff"; // White text color for better visibility
         }
 
@@ -247,11 +228,6 @@ function updateCountdown() {
 
     // Update calendar every day at midnight
     setInterval(updateCalendar, 24 * 60 * 60 * 1000);
-
-    // Add event listener to video button
-    document.getElementById('videoButton').addEventListener('click', function() {
-        window.open('https://drive.google.com/file/d/1uzsNAOjndAMUomtWMYSR_11w9MG6VWLq/view?usp=drive_link', '_blank');
-    });
 </script>
 </body>
 </html>
