@@ -11,6 +11,7 @@
 <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
     body {
         display: flex;
@@ -42,17 +43,29 @@
         font-size: 150px; /*Title font size*/
         font-weight: 700;
         text-align: center;
-        color: #2a9d8f; /*Title color*/
+        color: #2b2d42; /*Title color*/
     }
 
     /* Styles for the countdown */
     #countdown {
-        font-size: 48px;
-        font-weight: 400;
-        text-align: center;
-        margin-bottom: 20px;
-        color: #333333; /* Dark grey color for the countdown */
-    }
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333333; /* Dark grey color for the countdown */
+}
+
+    #days {
+    font-family: 'Roboto', sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+    #time {
+    font-family: 'Roboto', sans-serif;
+    font-size: 48px;
+    font-weight: 400;
+}
+
 
     /* Styles for the calendar */
     #calendar-container {
@@ -75,7 +88,7 @@
         gap: 5px;
     }
 
-    .day {
+    .day, .weekday {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -85,12 +98,18 @@
         border-radius: 5px;
         font-size: 14px;
         background-color: #f9f9f9; /* Light background for days */
-        color: #333333; /* Dark grey color for text */
+        color: #2b2d42; /* Dark grey color for text */
     }
 
     .past-day {
         text-decoration: line-through;
         color: #aaaaaa;
+    }
+
+    .weekday {
+        font-weight: bold;
+        background-color: #2b2d42;
+        color: #ffffff;
     }
 
     /* Responsive styles */
@@ -152,7 +171,11 @@
     <div id="title">Padhloo!!!</div> <!-- Timer title -->
 </div>
 
-<div id="countdown"></div> <!-- Countdown timer -->
+<div id="countdown">
+    <div id="days"></div>
+    <div id="time"></div>
+</div>
+ <!-- Countdown timer -->
 
 <div id="calendar-container">
     <div id="monthName"></div> <!-- Month name -->
@@ -160,11 +183,11 @@
 </div>
 
 <script>
-// Target date (October 28, 2024 at 14:05 hours)
+// Target date (November 1, 2024 at 00:00 hours)
     var targetDate = new Date('2024-10-28T14:05:00');
 
   // Function to update countdown
-function updateCountdown() {
+  function updateCountdown() {
     var currentDate = new Date();
     var timeDifference = targetDate.getTime() - currentDate.getTime();
 
@@ -181,15 +204,17 @@ function updateCountdown() {
         var seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
         // Display countdown
-        document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+        document.getElementById("days").innerHTML = '<span style="color: #2a9d8f;">' + days + ' Days</span>';
+        document.getElementById("time").innerHTML = hours + "h " + minutes + "m " + seconds + "s";
 
         // Continue countdown
         setTimeout(updateCountdown, 1000);
     }
 }
 
-    // Initial call to start the countdown
-    updateCountdown();
+// Initial call to start the countdown
+updateCountdown();
+
 
     // Function to generate and update calendar
     function updateCalendar() {
@@ -198,11 +223,34 @@ function updateCountdown() {
         calendar.innerHTML = ''; // Clear existing calendar
 
         var currentDate = new Date();
-        var daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+        var year = currentDate.getFullYear();
+        var month = currentDate.getMonth();
+        var daysInMonth = new Date(year, month + 1, 0).getDate();
         var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var weekDays = ["M", "T", "W", "T", "F", "S", "S"];
 
-        monthName.innerHTML = monthNames[currentDate.getMonth()] + " " + currentDate.getFullYear();
+        monthName.innerHTML = monthNames[month] + " " + year;
 
+        // Add weekdays header
+        for (var i = 0; i < weekDays.length; i++) {
+            var weekDayElement = document.createElement('div');
+            weekDayElement.className = 'weekday';
+            weekDayElement.innerHTML = weekDays[i];
+            calendar.appendChild(weekDayElement);
+        }
+
+        // Calculate the start day of the month (0 - Sunday, 1 - Monday, etc.)
+        var startDay = new Date(year, month, 1).getDay();
+        startDay = (startDay === 0) ? 6 : startDay - 1; // Adjust so Monday is the first day
+
+        // Fill in the blank days before the first day of the month
+        for (var i = 0; i < startDay; i++) {
+            var blankDayElement = document.createElement('div');
+            blankDayElement.className = 'day';
+            calendar.appendChild(blankDayElement);
+        }
+
+        // Add the days of the month
         for (var day = 1; day <= daysInMonth; day++) {
             var dayElement = document.createElement('div');
             dayElement.className = 'day';
@@ -212,12 +260,12 @@ function updateCountdown() {
             if (day < currentDate.getDate()) {
                 dayElement.classList.add('past-day');
             }
-        // Apply color of "Padhloo!!!" to the current day
-        var currentDay = document.getElementById("calendar").querySelector('.day:nth-child(' + (currentDate.getDate() + 0) + ')');
-        if (currentDay) {
-        currentDay.style.backgroundColor = "#2a9d8f"; // Color of "Padhloo!!!"
-        currentDay.style.color = "#ffffff"; // White text color for better visibility
-        }
+            
+            // Apply color of "Padhloo!!!" to the current day
+            if (day === currentDate.getDate()) {
+                dayElement.style.backgroundColor = "#2a9d8f"; // Color of "Padhloo!!!"
+                dayElement.style.color = "#ffffff"; // White text color for better visibility
+            }
 
             calendar.appendChild(dayElement);
         }
